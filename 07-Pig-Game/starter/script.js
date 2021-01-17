@@ -21,11 +21,13 @@ let currentValue = 0;
 let scoreValue1 = 0;
 let scoreValue2 = 0;
 
+//현재 주사위 값의 합을 textcontent에 저장
 const currentScoreNodeFn = function(arrEl) {
     const currentScoreNode = arrEl.children[2].children[1];
     return currentScoreNode.textContent = currentValue;
 }
 
+//Player 변경
 const changePlayer = function() {
     players.forEach(function(player) {
         if(player.classList.contains('player--active')) {
@@ -39,6 +41,7 @@ const changePlayer = function() {
     });
 }
 
+//UI 초기값
 const defaultUI = function() {
 for(let i = 0; i < players.length; i++) {
     if(player2.classList.contains('player--active')) {
@@ -59,11 +62,12 @@ dice.style.display = 'none';
 }
 defaultUI();
 
+//점수 표시 지점 값 가져옴
 const scoreNode = [].map.call(players, function(e) {
     return e.children[1];
 })
 
-
+//주사위 굴렸을 때 기은 구현
 const diceRoll = function() {
     const diceNumber = Math.trunc(Math.random() * 6) + 1;
 
@@ -84,6 +88,7 @@ const diceRoll = function() {
     dice.src = `dice-${diceNumber}.png`;
 };
 
+//홀드 눌렀을 때 기능 구현
 const scoreHold = function() {
     if(player1.classList.contains('player--winner') || player2.classList.contains('player--winner')){
         return;
