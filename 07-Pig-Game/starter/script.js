@@ -42,8 +42,8 @@ const changePlayer = function() {
     });
 }
 
-//UI 초기값
-const defaultUI = function() {
+//초기값
+const init = function() {
 for(let i = 0; i < players.length; i++) {
     if(player2.classList.contains('player--active')) {
       changePlayer();
@@ -62,7 +62,7 @@ for(let i = 0; i < players.length; i++) {
 dice.style.display = 'none';
 }
 
-defaultUI();
+init();
 
 //점수 표시 지점 값 가져옴
 const scoreNode = [].map.call(players, function(e) {
@@ -124,7 +124,7 @@ const scoreHold = function() {
 
 
 
-btnRegame.addEventListener('click', defaultUI);
+btnRegame.addEventListener('click', init);
 btnRoll.addEventListener('click', diceRoll);
 btnHold.addEventListener('click', scoreHold);
 
