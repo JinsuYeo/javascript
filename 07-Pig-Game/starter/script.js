@@ -20,11 +20,12 @@ const btnHold = document.querySelector('.btn--hold');
 let currentValue = 0;
 let scoreValue1 = 0;
 let scoreValue2 = 0;
+// let playing = true;
 
 //현재 주사위 값의 합을 textcontent에 저장
 const currentScoreNodeFn = function(arrEl) {
     const currentScoreNode = arrEl.children[2].children[1];
-    return currentScoreNode.textContent = currentValue;
+    currentScoreNode.textContent = currentValue;
 }
 
 //Player 변경
@@ -60,6 +61,7 @@ for(let i = 0; i < players.length; i++) {
 
 dice.style.display = 'none';
 }
+
 defaultUI();
 
 //점수 표시 지점 값 가져옴
@@ -97,12 +99,18 @@ const scoreHold = function() {
         scoreNode[0].textContent = scoreValue1;
         if(scoreValue1 >= 100) {
             player1.classList.add('player--winner');
+            player1.classList.remove('player--active');
+            dice.style.display = 'none';
+            return;
         }
     } else {
         scoreValue2 += currentValue
         scoreNode[1].textContent = scoreValue2;
         if(scoreValue2 >= 100) {
             player2.classList.add('player--winner');
+            player2.classList.remove('player--active');
+            dice.style.display = 'none';
+            return;
         }
     }
 
