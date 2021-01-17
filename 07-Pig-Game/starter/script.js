@@ -17,9 +17,7 @@ const btnHold = document.querySelector('.btn--hold');
 
 
 
-let currentValue = 0;
-let scoreValue1 = 0;
-let scoreValue2 = 0;
+let currentValue, scoreValue1, scoreValue2;
 // let playing = true;
 
 //현재 주사위 값의 합을 textcontent에 저장
