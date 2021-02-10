@@ -13,6 +13,8 @@ const openingHours = {
     open: 0, // Open 24 hours
     close: 24,
   },
+
+  [`day-${2+4}`]: 10,
 };
 
 const restaurant = {
