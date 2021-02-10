@@ -78,3 +78,24 @@ console.log(Jonas.calcAge, matilda.age);
 Jonas.calcAge();
 
 calcAge(12);
+
+console.log(Jonas.dd);
+
+let age= 30;
+let oldAge = age;
+age = 31;
+
+console.log(age);
+console.log(oldAge);
+
+const me = {
+    name: 'Jonas',
+    age: 30,
+};
+
+const friend = me;
+
+friend.age = 27;
+
+console.log(me);
+console.log(friend);
