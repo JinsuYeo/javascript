@@ -48,12 +48,42 @@ const restaurant = {
   }
 };
 
- 
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet);
+const ordersArr = [...ordersSet];
+console.log(ordersArr);
+
+console.log(new Set('Jonas'));
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pasta'));
+
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+console.log(ordersSet);
+
+ordersArr.push('ab')
+console.log(ordersArr);
+
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+
+// ordersSet.clear();
+// console.log(ordersSet);
 
 
+for(const order of ordersSet) {
+  console.log(order);
+}
 
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffSet = [...new Set(staff)];
+console.log(staffSet);
 
-const properties = Object.keys(openingHours);
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
+
+console.log(new Set('Jonasschmedtman').size);
+
+// const properties = Object.keys(openingHours);
 // console.log(properties);
 
 // let openStr = `We are open on ${properties.length} days: `

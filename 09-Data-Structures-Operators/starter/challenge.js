@@ -63,33 +63,62 @@ const game = {
 
 // team1 > team2 && console.log(game.team2) || team1 < team2 && console.log(game.team1);
 
-for(const [i, e] of game.scored.entries()) {
-    console.log(`Goal ${i + 1}: ${e}`);
-}
+// for(const [i, e] of game.scored.entries()) {
+//     console.log(`Goal ${i + 1}: ${e}`);
+// }
 
-const odd = Object.values(game.odds);
-console.log(odd);
-let sum = 0;
-let avr;
-for(const o of odd) {
-    sum += o;
-    avr = sum / odd.length;
-}
-console.log(`${avr}`);
+// const odd = Object.values(game.odds);
+// console.log(odd);
+// let sum = 0;
+// let avr;
+// for(const o of odd) {
+//     sum += o;
+//     avr = sum / odd.length;
+// }
+// console.log(`${avr}`);
 
-const gameArr = Object.entries(game);
-const oddArr = Object.entries(game.odds);
-console.log(gameArr);
-console.log(oddArr);
+// const gameArr = Object.entries(game);
+// const oddArr = Object.entries(game.odds);
+// console.log(gameArr);
+// console.log(oddArr);
 
-for(const [key, value] of oddArr) {
-    console.log(`Odd of victory ${game[key] ?? 'draw'}: ${value}`);
-}
+// for(const [key, value] of oddArr) {
+//     console.log(`Odd of victory ${game[key] ?? 'draw'}: ${value}`);
+// }
 
-const scorers = {}
-for(const s of game.scored) {
-    scorers[s] ? scorers[s]++ : (scorers[s] = 1);
-}
+// const scorers = {}
+// for(const s of game.scored) {
+//     scorers[s] ? scorers[s]++ : (scorers[s] = 1);
+// }
 
-console.log(scorers);
+// console.log(scorers);
 
+// function solution(n, lost, reserve) {
+//     var answer = 0;
+//     const temp = n - lost.length - reserve.length;
+//     console.log(temp)
+    
+//     lost.sort((a, b) => a - b);
+//     reserve.sort((a, b) => a - b);
+    
+//     for(const r of reserve) {
+//         for(const l of lost) {
+//                             console.log(l, r);
+
+//             if(l - 1 === r) {
+//                 lost.splice(lost.indexOf(l), 1);
+//                 reserve.splice(reserve.indexOf(r), 1);
+                
+//                 answer += 2;
+//                 console.log(answer)
+//                 console.log(reserve, lost)
+//             } 
+//     }
+//     }
+        
+//     answer += temp + reserve.length;
+    
+//     return answer;
+// }
+
+// solution(5, [2, 4], [1, 3, 5]);
