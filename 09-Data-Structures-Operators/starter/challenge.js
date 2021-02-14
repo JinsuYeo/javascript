@@ -48,6 +48,37 @@ const game = {
     }
 };
 
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+let avr = 0;
+// let temp = gameEvents.values();
+
+// temp = new Set(temp);
+// const events = [...temp];
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+gameEvents.delete(64);
+
+avr = Math.round(90 / gameEvents.size);
+console.log(`An event happened, on average, every ${avr} minuites`);
+
+for(const [i, e] of gameEvents) {
+  console.log(`${i <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${i}: ${e}`);
+}
+
 // const [players1, players2] = game.players;
 // const [gk, ...fieldPlayers] = players1;
 // const allPlayers = [...players1, ...players2];
@@ -122,3 +153,35 @@ const game = {
 // }
 
 // solution(5, [2, 4], [1, 3, 5]);
+
+// function solution(input) {
+//     let answer = 0;
+//     let temp = 1000 - input;
+  
+//     while(temp > 0) {
+
+    
+//     if(temp >= 500) {
+//       temp -= 500;
+//       answer += 1;
+//     } else if(temp >= 100) {
+//       temp -= 100;
+//       answer += 1; 
+//     } else if(temp >= 50) {
+//       temp -= 50;
+//       answer += 1;
+//     } else if(temp >= 10) {
+//       temp -= 10;
+//       answer += 1;
+//     } else if(temp >= 5) {
+//       temp -= 5;
+//       answer += 1;
+//     } else if(temp >= 1) {
+//       temp -= 1;
+//       answer += 1;
+//     }  
+//   }
+//   return answer;
+//   }
+  
+//   console.log(solution(0));
