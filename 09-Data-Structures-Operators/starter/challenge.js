@@ -67,17 +67,17 @@ let avr = 0;
 
 // temp = new Set(temp);
 // const events = [...temp];
-const events = [...new Set(gameEvents.values())];
-console.log(events);
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
 
-gameEvents.delete(64);
+// gameEvents.delete(64);
 
-avr = Math.round(90 / gameEvents.size);
-console.log(`An event happened, on average, every ${avr} minuites`);
+// avr = Math.round(90 / gameEvents.size);
+// console.log(`An event happened, on average, every ${avr} minuites`);
 
-for(const [i, e] of gameEvents) {
-  console.log(`${i <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${i}: ${e}`);
-}
+// for(const [i, e] of gameEvents) {
+//   console.log(`${i <= 45 ? '[FIRST HALF]' : '[SECOND HALF]'} ${i}: ${e}`);
+// }
 
 // const [players1, players2] = game.players;
 // const [gk, ...fieldPlayers] = players1;
