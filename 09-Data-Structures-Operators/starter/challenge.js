@@ -62,7 +62,7 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-let avr = 0;
+// let avr = 0;
 // let temp = gameEvents.values();
 
 // temp = new Set(temp);
