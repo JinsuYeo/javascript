@@ -78,16 +78,25 @@ const displayMovements = function(movements) {
 }
 displayMovements(account1.movements);
 
+const createUsernames = function(accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  });
+};
 
-
-
+createUsernames(accounts);
+console.log(accounts);
 
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -160,3 +169,35 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function(value, key, set) {
   console.log(`${key}: ${value}`);
 }) */
+
+/* const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function(mov) {
+//   return Math.trunc(mov * eurToUsd); 
+// })
+
+// console.log(movements);
+// console.log(movementsUSD);
+
+
+const movementsUSD = movements.map(mov => Math.trunc(mov * eurToUsd));
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsDescription = movements.map((mov, i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);
+console.log(movementsDescription); */
+
+const deposit = movements.filter(mov => mov > 0);
+console.log(movements);
+console.log(deposit);
+
+const withdrawal = movements.filter(mov => mov < 0);
+console.log(withdrawal);
+
+// accumulator -> SNOWBALL
+const balance = movements.reduce((acc, mov, i, arr) => acc + mov);
+
+console.log(balance);
