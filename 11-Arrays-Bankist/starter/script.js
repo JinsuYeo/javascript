@@ -437,3 +437,14 @@ const bankDepositSum = accounts
 .reduce((a, c) => a + c, 0);
 
 console.log(bankDepositSum);
+
+const numDeposits1000 = accounts
+.flatMap(acc => acc.movements)
+.reduce((a, c) => c >= 1000 ? 1 + a : a, 0);
+
+console.log(accounts.flatMap(acc => acc.movements));
+console.log(numDeposits1000);
+
+let a = 1;
+console.log(a++); 
+console.log(++a);
