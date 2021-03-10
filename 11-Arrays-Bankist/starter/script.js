@@ -161,6 +161,35 @@ btnTransfer.addEventListener('click', function(e) {
   }
 })
 
+btnLoan.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+
+  inputLoanAmount.value = '';
+})
+
+btnClose.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  if(currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)) {
+      const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+      
+      accounts.splice(index, 1);
+
+      containerApp.style.opacity = 0;
+    }
+
+    inputCloseUsername.value = inputClosePin.value = '';
+})
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -305,3 +334,25 @@ const totalDepositsUSD = movements
   //   acc.owner === 'Jessica Davis' ?  accounts2 = acc : accounts2 = accounts2;
   // }
   // console.log(accounts2);
+/* 
+  console.log(movements);
+
+  // EQUALITY
+  console.log(movements.includes(-130));
+
+  // SOME: CONDITION
+console.log(movements.some(mov => mov === -130));
+
+  const anyDeposit = movements.some(mov => mov > 1500);
+
+  console.log(anyDeposit); */
+
+/*   // EVERY
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+//Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit)); */
