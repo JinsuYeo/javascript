@@ -405,14 +405,35 @@ console.log(movements.filter(deposit)); */
 // console.log(movements.sort((a, b) => a - b));
 // console.log(movements.sort((a, b) => b - a));
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
+// const arr = [1, 2, 3, 4, 5, 6, 7];
 
-const x = new Array(7);
-console.log(x);
-// console.log(x.map(() => 5));
+// const x = new Array(7);
+// console.log(x);
+// // console.log(x.map(() => 5));
 
-x.fill(1, 3);
-console.log(x);
+// x.fill(1, 3);
+// x.fill(1);
+// console.log(x);
 
-arr.fill(23, 2, 6);
-console.log(arr);
+// arr.fill(23, 2, 6);
+// console.log(arr);
+
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
+
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
+
+
+// labelBalance.addEventListener('click', function() {
+//   const movementsUI = Array.from(document.querySelectorAll('.movements__value'),el => Number(el.textContent.replace('€', '')));
+
+//   console.log(movementsUI);
+// })
+
+const bankDepositSum = accounts
+.flatMap(acc => acc.movements)
+.filter(a => a > 0)
+.reduce((a, c) => a + c, 0);
+
+console.log(bankDepositSum);
