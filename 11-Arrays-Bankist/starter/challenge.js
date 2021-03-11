@@ -43,3 +43,46 @@
 
 // console.log(calcAverageHumanAge([5,2,4,1,15,8,3]));
 // console.log(calcAverageHumanAge([16,6,10,5,6,1,4]));
+
+// const dogs = [
+//     { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] }, 
+//     { weight: 8, curFood: 200, owners: ['Matilda'] },
+//     { weight: 13, curFood: 275, owners: ['Sarah', 'John'] }, 
+//     { weight: 32, curFood: 340, owners: ['Michael'] },
+//     ];
+
+// dogs.forEach(dog => dog.recommendedFood = dog.weight ** .75 * 28);
+
+// const sarahDog = dogs.filter(dog => dog.owners.includes('Sarah'))[0];
+
+// const eatingOk = function(dog) {
+//     const food = dog.curFood;
+//     const recommended = dog.recommendedFood;
+
+//     if(food > recommended + recommended*.1) {
+//         return 'Eating too much';
+//     } else if (food < recommended - recommended*.1) {
+//         return 'Eating too little'
+//     } else {
+//         return 'Eating an okay amount';
+//     }
+// }
+
+// const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedFood + dog.recommendedFood*.1)
+// .flatMap(dog => dog.owners);
+// const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recommendedFood - dog.recommendedFood*.1)
+// .flatMap(dog => dog.owners);;
+
+
+// console.log(eatingOk(sarahDog));
+
+// console.log(ownersEatTooMuch.join(' and ') + '\'s dogs eat too much!');
+// console.log(ownersEatTooLittle.join(' and ') + '\'s dogs eat too little!');
+
+// console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+// console.log(dogs.some(dog => eatingOk(dog) === 'Eating an okay amount'));
+// const [eatingOkayDog] = dogs.filter(dog => eatingOk(dog) === 'Eating an okay amount');
+// console.log(eatingOkayDog);
+
+// const sortedDogs = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
+// console.log(sortedDogs);
