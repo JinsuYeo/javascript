@@ -431,20 +431,43 @@ console.log(movements.filter(deposit)); */
 //   console.log(movementsUI);
 // })
 
-const bankDepositSum = accounts
-.flatMap(acc => acc.movements)
-.filter(a => a > 0)
-.reduce((a, c) => a + c, 0);
+// const bankDepositSum = accounts
+// .flatMap(acc => acc.movements)
+// .filter(a => a > 0)
+// .reduce((a, c) => a + c, 0);
 
-console.log(bankDepositSum);
+// console.log(bankDepositSum);
 
-const numDeposits1000 = accounts
-.flatMap(acc => acc.movements)
-.reduce((a, c) => c >= 1000 ? 1 + a : a, 0);
+// const numDeposits1000 = accounts
+// .flatMap(acc => acc.movements)
+// .reduce((a, c) => c >= 1000 ? 1 + a : a, 0);
 
-console.log(accounts.flatMap(acc => acc.movements));
-console.log(numDeposits1000);
+// console.log(accounts.flatMap(acc => acc.movements));
+// console.log(numDeposits1000);
 
-let a = 1;
-console.log(a++); 
-console.log(++a);
+// let a = 1;
+// console.log(a++); 
+// console.log(++a);
+
+// const {deposit, withdrawal} = accounts
+// .flatMap(acc => acc.movements)
+// .reduce((sums, cur) => {
+//   // cur > 0 ? sums.deposit += cur : sums.withdrawal += cur;
+//   sums[cur > 0 ? 'deposit' : 'withdrawal'] += cur;
+//   return sums;
+// }, {deposit: 0, withdrawal: 0})
+
+// console.log(deposit, withdrawal);
+
+// // this is a nice title -> This Is a Nice Title
+
+// const convertTitleCase = function(title) {
+//   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in'];
+//   return title
+//     .toLowerCase().split(' ')
+//     .map(a => exceptions.includes(a) ? a : a[0]
+//     .toUpperCase() + a.slice(1))
+//     .join(' ');
+// }
+
+// console.log(convertTitleCase('this is a nice title'));
