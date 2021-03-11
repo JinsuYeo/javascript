@@ -292,3 +292,15 @@ console.log(Number.isFinite(20 / 0)); */
 //     if(i % 3 === 0) row.style.backgroundColor = 'blue';
 //   }
 // )});
+
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+
+// console.log(23123123123123213213213n * 23n);
+
+// console.log(20n > 15);
+// console.log(20n === 20);
+// console.log(20n == 20);
+// console.log(typeof 20n);
+
+// console.log(213123123123n + 'string');
