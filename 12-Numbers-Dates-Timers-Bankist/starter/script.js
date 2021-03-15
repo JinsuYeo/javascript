@@ -177,12 +177,35 @@ const updateUI = function(acc) {
   calcDisplaySummary(acc);
 }
 
-// Event handler
-let currentAccount;
+const startLogOutTimer = function() {
+  const tick = function() {
+    const min = Math.trunc(time / 60).toString().padStart(2, 0);
+    const sec = (time % 60).toString().padStart(2, 0);
 
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+    labelTimer.textContent = `${min}:${sec}`;
+
+    if(time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    time--;
+  };
+
+  let time = 300;
+  
+  tick();
+  timer = setInterval(tick, 1000);
+  return timer;
+}
+
+// Event handler
+let currentAccount, timer;
+
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function(e) {
   e.preventDefault();
@@ -210,6 +233,9 @@ btnLogin.addEventListener('click', function(e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
+    if(timer) clearInterval(timer);
+    timer = startLogOutTimer();
+
     updateUI(currentAccount);
   }
 })
@@ -234,6 +260,9 @@ btnTransfer.addEventListener('click', function(e) {
       receiverAcc.movementsDates.push(new Date().toISOString());
 
       updateUI(currentAccount);
+
+      clearInterval(timer);
+      timer = startLogOutTimer();
   }
 })
 
@@ -243,11 +272,16 @@ btnLoan.addEventListener('click', function(e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
-    currentAccount.movements.push(amount);
+    setTimeout(() => {
+      currentAccount.movements.push(amount);
 
     currentAccount.movementsDates.push(new Date().toISOString());
 
     updateUI(currentAccount);
+
+    clearInterval(timer);
+    timer = startLogOutTimer();
+    }, 2500);
   }
 
   inputLoanAmount.value = '';
@@ -417,3 +451,22 @@ console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
 console.log('Korea: ', new Intl.NumberFormat('ko-KR', options).format(num));
 console.log('Syria: ', new Intl.NumberFormat('ar-SY', options).format(num));
 console.log('Browser: ', new Intl.NumberFormat(navigator.language, options).format(num)); */
+
+// const ingredients = ['olives', 'spinach'];
+// const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Here is your pizza with ${ing1}, ${ing2}`), 
+//   3000,
+//   ...ingredients
+//  );
+// console.log('Waiting');
+
+// if(ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval(() => {
+//   const now = new Date();
+//   const options = {
+//     hour: 'numeric',
+//     minute: 'numeric',
+//     second: 'numeric'
+//   }
+//   console.log(new Intl.DateTimeFormat('ko-KR', options).format(now));
+// }, 1000);
