@@ -58,8 +58,8 @@ message.classList.add('cookie-message');
 message.innerHTML = 'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // header.prepend(message);
-header.insertAdjacentHTML('beforeend', `<div class="cookie-message">'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>'<div>`);
-// header.append(message);
+// header.insertAdjacentHTML('beforeend', `<div class="cookie-message">'We use cookied for improved functionality and analytics.'<button class="btn btn--close-cookie">Got it!</button><div>`);
+header.append(message);
 // header.append(message.cloneNode(true));
 
 // header.before(message);
@@ -67,4 +67,30 @@ header.insertAdjacentHTML('beforeend', `<div class="cookie-message">'We use cook
 
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
   message.remove();
+  // header.children[2].innerHTML = '';
 })
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.backgroundColor);
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height) + 40 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo';
+console.log(logo.alt);
+
+logo.setAttribute('company', 'Bankist');
+console.log(logo.getAttribute('company'));
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
