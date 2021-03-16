@@ -94,3 +94,9 @@ console.log(logo.getAttribute('company'));
 
 console.log(logo.src);
 console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+console.log(logo.dataset.versionNumber);
