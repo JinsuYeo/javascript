@@ -158,7 +158,7 @@ document.querySelector('.nav__link').addEventListener('click', function(e) {
   console.log('LINK', e.target, e.currentTarget);
   console.log(e.currentTarget === this);
 
-  e.stopPropagation();
+  // e.stopPropagation();
 });
 
 document.querySelector('.nav__links').addEventListener('click', function(e) {
