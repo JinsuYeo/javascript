@@ -34,7 +34,7 @@ document.addEventListener('keydown', function (e) {
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
-
+/* 
 // console.log(document.documentElement);
 // console.log(document.body);
 // console.log(document.head);
@@ -100,3 +100,12 @@ console.log(link.href);
 console.log(link.getAttribute('href'));
 
 console.log(logo.dataset.versionNumber);
+
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c', 'j');
+logo.classList.contains('c', 'j');
+
+// Don't use
+logo.className = 'jonas';   */
+
