@@ -75,8 +75,28 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
   if(e.target.classList.contains('nav__link')) {
   const id = e.target.getAttribute('href');
 
+    if(id === '#') return;
+
   document.querySelector(id).scrollIntoView({behavior: 'smooth'});
   }
+})
+
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContent = document.querySelectorAll('.operations__content');
+
+tabContainer.addEventListener('click', function(e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  if(!clicked) return;
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  clicked.classList.add('operations__tab--active');
+
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 })
 
 
@@ -246,3 +266,4 @@ logo.className = 'jonas';   */
 // [...h1.parentElement.children].forEach(function(el) {
 //   if(el !== h1) el.style.transform = 'scale(0.5)';
 // })
+
