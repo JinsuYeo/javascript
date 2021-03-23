@@ -1,5 +1,5 @@
 'use strict';
-
+/* 
 const Person = function(firstName, birthYear) {
     // Instance properties
     this.firstName = firstName;
@@ -12,7 +12,7 @@ const Person = function(firstName, birthYear) {
 
 const jonas = new Person('Jonas', 1991);
 
-console.log(jonas);
+console.log(jonas); 
 
 const matilda = new Person('Matilda', 2017);
 const jack = new Person('Jack', 2017);
@@ -69,4 +69,70 @@ Array.prototype.unique = function() {
 console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
-console.dir(x => x + 1);
+console.dir(x => x + 1); */
+
+// class expression
+// const PersonCl = class {}
+
+// class declaration
+class PersonCl {
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+    }
+
+    // Method will be added to .prototype property
+    calcAge() {
+        console.log(2037 - this.birthYear);
+    }
+
+    greet() {
+        console.log(`Hey ${this.fullName}`);
+    }
+
+    get age() {
+        return 2037 - this.birthYear;
+    }
+
+    // Set a property that aleady exist
+    set fullName(name) {
+        if(name.includes(' ')) this._fullName = name;
+        else this._fullName = name + ' Smith'
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
+}
+
+const jessica = new PersonCl('jessica Davis', 1996);
+console.log(jessica);
+jessica.calcAge();
+console.log(jessica.age);
+
+// console.log(jessica.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function() {
+//     console.log(`Hey ${this.firstName}`);
+// }
+// jessica.greet();
+
+const walter = new PersonCl('Walter', 1965);
+
+ const account = {
+     owner: 'jonas',
+     movements: [200, 530, 120, 300],
+
+     get latest() {
+        return this.movements.pop();
+     },
+
+     set latest(mov) {
+         this.movements.push(mov);
+     },
+ };
+
+ console.log(account.latest);
+
+ account.latest = 50;
+ console.log(account.movements);
