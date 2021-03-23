@@ -1,5 +1,5 @@
 'use strict';
-/* 
+
 const Person = function(firstName, birthYear) {
     // Instance properties
     this.firstName = firstName;
@@ -20,6 +20,15 @@ console.log(matilda, jack);
 
 const jay = 'Jay';
 
+Person.hey = function() {
+    console.log('Hey');
+    console.log(this);
+}
+
+Person.hey();
+
+// jonas.hey();
+/* 
 console.log(jonas instanceof Person);
 console.log(jay instanceof Person);
 
@@ -81,6 +90,7 @@ class PersonCl {
         this.birthYear = birthYear;
     }
 
+    // Instance method  
     // Method will be added to .prototype property
     calcAge() {
         console.log(2037 - this.birthYear);
@@ -103,36 +113,43 @@ class PersonCl {
     get fullName() {
         return this._fullName;
     }
+
+    // Static method
+    static hey() {
+        console.log('Hey');
+        console.log(this);
+    }
 }
 
-const jessica = new PersonCl('jessica Davis', 1996);
-console.log(jessica);
-jessica.calcAge();
-console.log(jessica.age);
+PersonCl.hey();
+// const jessica = new PersonCl('jessica Davis', 1996);
+// console.log(jessica);
+// jessica.calcAge();
+// console.log(jessica.age);
 
-// console.log(jessica.__proto__ === PersonCl.prototype);
+// // console.log(jessica.__proto__ === PersonCl.prototype);
 
-// PersonCl.prototype.greet = function() {
-//     console.log(`Hey ${this.firstName}`);
-// }
-// jessica.greet();
+// // PersonCl.prototype.greet = function() {
+// //     console.log(`Hey ${this.firstName}`);
+// // }
+// // jessica.greet();
 
-const walter = new PersonCl('Walter', 1965);
+// const walter = new PersonCl('Walter', 1965);
 
- const account = {
-     owner: 'jonas',
-     movements: [200, 530, 120, 300],
+//  const account = {
+//      owner: 'jonas',
+//      movements: [200, 530, 120, 300],
 
-     get latest() {
-        return this.movements.pop();
-     },
+//      get latest() {
+//         return this.movements.pop();
+//      },
 
-     set latest(mov) {
-         this.movements.push(mov);
-     },
- };
+//      set latest(mov) {
+//          this.movements.push(mov);
+//      },
+//  };
 
- console.log(account.latest);
+//  console.log(account.latest);
 
- account.latest = 50;
- console.log(account.movements);
+//  account.latest = 50;
+//  console.log(account.movements);
