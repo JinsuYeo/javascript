@@ -12,20 +12,20 @@ const Person = function(firstName, birthYear) {
 
 const jonas = new Person('Jonas', 1991);
 
-console.log(jonas); 
+// console.log(jonas); 
 
-const matilda = new Person('Matilda', 2017);
-const jack = new Person('Jack', 2017);
-console.log(matilda, jack);
+// const matilda = new Person('Matilda', 2017);
+// const jack = new Person('Jack', 2017);
+// console.log(matilda, jack);
 
-const jay = 'Jay';
+// const jay = 'Jay';
 
-Person.hey = function() {
-    console.log('Hey');
-    console.log(this);
-}
+// Person.hey = function() {
+//     console.log('Hey');
+//     console.log(this);
+// }
 
-Person.hey();
+// Person.hey();
 
 // jonas.hey();
 /* 
@@ -121,7 +121,7 @@ class PersonCl {
     }
 }
 
-PersonCl.hey();
+// PersonCl.hey();
 // const jessica = new PersonCl('jessica Davis', 1996);
 // console.log(jessica);
 // jessica.calcAge();
@@ -153,3 +153,28 @@ PersonCl.hey();
 
 //  account.latest = 50;
 //  console.log(account.movements);
+
+const PersonProto = {
+    calcAge() {
+        console.log(2037 - this.birthYear);
+    },
+
+    init(firstName, birthName) {
+        this.firstName = firstName;
+        this.birthYear = birthName;
+    }
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__);
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979);
+console.log(sarah);
+sarah.calcAge();
