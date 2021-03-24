@@ -216,39 +216,87 @@ console.dir(x => x + 1); */
 // Student.prototype.constructor = Student;
 // console.dir(Student.prototype.constructor);
 
-class PersonCl {
-    constructor(fullName, birthYear) {
-        this.fullName = fullName;
-        this.birthYear = birthYear;
-    }
+// class PersonCl {
+//     constructor(fullName, birthYear) {
+//         this.fullName = fullName;
+//         this.birthYear = birthYear;
+//     }
 
-    // Instance method  
-    // Method will be added to .prototype property
-    calcAge() {
-        console.log(2037 - this.birthYear);
-    }
+//     // Instance method  
+//     // Method will be added to .prototype property
+//     calcAge() {
+//         console.log(2037 - this.birthYear);
+//     }
 
-    greet() {
-        console.log(`Hey ${this.fullName}`);
-    }
+//     greet() {
+//         console.log(`Hey ${this.fullName}`);
+//     }
 
-    get age() {
-        return 2037 - this.birthYear;
-    }
+//     get age() {
+//         return 2037 - this.birthYear;
+//     }
 
-    // Set a property that aleady exist
-    set fullName(name) {
-        if(name.includes(' ')) this._fullName = name;
-        else this._fullName = name + ' Smith'
-    }
+//     // Set a property that aleady exist
+//     set fullName(name) {
+//         if(name.includes(' ')) this._fullName = name;
+//         else this._fullName = name + ' Smith'
+//     }
 
-    get fullName() {
-        return this._fullName;
-    }
+//     get fullName() {
+//         return this._fullName;
+//     }
 
-    // Static method
-    static hey() {
-        console.log('Hey');
-        console.log(this);
-    }
+//     // Static method
+//     static hey() {
+//         console.log('Hey');
+//         console.log(this);
+//     }
+// };
+
+// class StudentCl extends PersonCl {
+//     constructor(fullName, birthYear, course) {
+//         // Always needs to happen first!
+//         super(fullName, birthYear);
+//         this.course = course;
+//     }
+
+//     introduce() {
+//                 console.log(`My name is ${this.fullName} and I study ${this.course}`);
+//             }
+
+//     calcAge() {
+//         console.log(`I'm ${2037 - this.birthYear} years old, but as a student I feel more like ${2037 - this.birthYear + 10}`);
+//     }
+// }
+
+// const martha = new StudentCl('Martha', 2012, 'Computer Science');
+// martha.introduce();
+// martha.calcAge();
+
+const PersonProto = {
+        calcAge() {
+            console.log(2037 - this.birthYear);
+        },
+    
+        init(firstName, birthYear) {
+            this.firstName = firstName;
+            this.birthYear = birthYear;
+        }
+    };
+    
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function(firstName, birthYear, course) {
+    PersonProto.init.call(this, firstName, birthYear);
+    this.course = course;
 }
+
+StudentProto.introduce = function() {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+}
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'Computer Science');
+jay.introduce();
+jay.calcAge();
