@@ -308,71 +308,71 @@ console.dir(x => x + 1); */
 // Private methods
 // (there is also the static version)
 
-class Account {
-    // 1) Public fields (instance)
-    locale = navigator.language;
+// class Account {
+//     // 1) Public fields (instance)
+//     locale = navigator.language;
 
-    // 2) Private fields (instance)
-    #movements = [];
-    #pin;
+//     // 2) Private fields (instance)
+//     #movements = [];
+//     #pin;
 
-    constructor(owner, currency, pin) {
-        this.owner = owner;
-        this.currency = currency;
-        // protected property
-        this.#pin = pin;
-        // this._movements = [];
-        // this.locale = navigator.language;
+//     constructor(owner, currency, pin) {
+//         this.owner = owner;
+//         this.currency = currency;
+//         // protected property
+//         this.#pin = pin;
+//         // this._movements = [];
+//         // this.locale = navigator.language;
 
-        console.log(`Thanks for opening an account, ${owner}`);
-    }
+//         console.log(`Thanks for opening an account, ${owner}`);
+//     }
 
-    // Public methods
+//     // Public methods
 
-    // Public interface
-    getMovements() {
-        return this.#movements;
-    }
+//     // Public interface
+//     getMovements() {
+//         return this.#movements;
+//     }
 
-    deposit(val) {
-        this.#movements.push(val);
-        return this;
-    }
+//     deposit(val) {
+//         this.#movements.push(val);
+//         return this;
+//     }
 
-    withdraw(val) {
-        this.deposit(-val);
-        return this;
-    }
+//     withdraw(val) {
+//         this.deposit(-val);
+//         return this;
+//     }
 
-    requestLoan(val) {
-        // if(this.#approveLoan(val)) {
-        if(this._approveLoan(val)) {
-            this.deposit(val);
-            console.log('Loan approved');
-            return this;
-        }
-    }
+//     requestLoan(val) {
+//         // if(this.#approveLoan(val)) {
+//         if(this._approveLoan(val)) {
+//             this.deposit(val);
+//             console.log('Loan approved');
+//             return this;
+//         }
+//     }
 
-    // Private methods
-    // #approveLoan(val) {
-    _approveLoan(val) {
-        return true;
-    }
-}
+//     // Private methods
+//     // #approveLoan(val) {
+//     _approveLoan(val) {
+//         return true;
+//     }
+// }
 
-const acc1 = new Account('Jonas', 'EUR', 1111);
-console.log(acc1);
+// const acc1 = new Account('Jonas', 'EUR', 1111);
+// console.log(acc1);
 
-// acc1.movements.push(250);
-// acc1.movements.push(-140);
-acc1.deposit(250);
-acc1.withdraw(140);
-acc1.requestLoan(1000);
-console.log(acc1.getMovements());
+// // acc1.movements.push(250);
+// // acc1.movements.push(-140);
+// acc1.deposit(250);
+// acc1.withdraw(140);
+// acc1.requestLoan(1000);
+// console.log(acc1.getMovements());
 
-// console.log(acc1.#movements);
-// console.log(accq.#pin);
-// console.log(acc1.#approveLoan);
+// // console.log(acc1.#movements);
+// // console.log(accq.#pin);
+// // console.log(acc1.#approveLoan);
 
-acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
-console.log(acc1.getMovements());
+// acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+// console.log(acc1.getMovements());
