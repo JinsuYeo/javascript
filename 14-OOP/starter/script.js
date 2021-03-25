@@ -273,30 +273,73 @@ console.dir(x => x + 1); */
 // martha.introduce();
 // martha.calcAge();
 
-const PersonProto = {
-        calcAge() {
-            console.log(2037 - this.birthYear);
-        },
+// const PersonProto = {
+//         calcAge() {
+//             console.log(2037 - this.birthYear);
+//         },
     
-        init(firstName, birthYear) {
-            this.firstName = firstName;
-            this.birthYear = birthYear;
+//         init(firstName, birthYear) {
+//             this.firstName = firstName;
+//             this.birthYear = birthYear;
+//         }
+//     };
+    
+// const steven = Object.create(PersonProto);
+
+// const StudentProto = Object.create(PersonProto);
+// StudentProto.init = function(firstName, birthYear, course) {
+//     PersonProto.init.call(this, firstName, birthYear);
+//     this.course = course;
+// }
+
+// StudentProto.introduce = function() {
+//     console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// }
+
+// const jay = Object.create(StudentProto);
+// jay.init('Jay', 2010, 'Computer Science');
+// jay.introduce();
+// jay.calcAge();
+
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account, ${owner}`);
+    }
+    // Public interface
+    deposit(val) {
+        this.movements.push(val);
+    }
+
+    withdraw(val) {
+        this.deposit(-val);
+    }
+
+    approveLoan(val) {
+        return true;
+    }
+
+    requestLoan(val) {
+        if(this.approveLoan(val)) {
+            this.deposit(val);
+            console.log('Loan approved');
         }
-    };
-    
-const steven = Object.create(PersonProto);
-
-const StudentProto = Object.create(PersonProto);
-StudentProto.init = function(firstName, birthYear, course) {
-    PersonProto.init.call(this, firstName, birthYear);
-    this.course = course;
+    }
 }
 
-StudentProto.introduce = function() {
-    console.log(`My name is ${this.firstName} and I study ${this.course}`);
-}
+const acc1 = new Account('Jonas', 'EUR', 1111);
+console.log(acc1);
 
-const jay = Object.create(StudentProto);
-jay.init('Jay', 2010, 'Computer Science');
-jay.introduce();
-jay.calcAge();
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+
+console.log(acc1.movements);
+
