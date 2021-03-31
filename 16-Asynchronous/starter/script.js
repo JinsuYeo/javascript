@@ -153,7 +153,32 @@ const wait = function(seconds) {
     });
 }
 
-wait(2).then(() => {
+wait(1).then(() => {
+    console.log('I waited for 1 seconds');
+    return wait(1);
+}).then(() => {
     console.log('I waited for 2 seconds');
     return wait(1);
-}).then(() => console.log('I waited for 1 seconds'));
+}).then(() => {
+    console.log('I waited for 3 seconds');
+    return wait(1);
+}).then(() => {
+    console.log('I waited for 4 seconds');
+    return wait(1);
+})
+
+setTimeout(() => {
+        console.log('1 sec');
+        setTimeout(() => {
+            console.log('2 sec');
+            setTimeout(() => {
+                console.log('3 sec');
+                setTimeout(() => {
+                    console.log('4 sec');
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    }, 1000);
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
