@@ -126,4 +126,8 @@ setTimeout(() => {
     console.log(2);
 }, 0);
 Promise.resolve(3).then(res => console.log(res));
-console.log(4);
+Promise.resolve(4).then(res => {
+    for(let i = 0; i < 1000000000; i++) {}
+    console.log(res);
+});
+console.log(5);
