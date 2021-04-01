@@ -222,25 +222,33 @@ const whereAmI = async function(country) {
         if(!resGeo.ok) throw new Error('Problem getting location data');
 
         const dataGeo = await resGeo.json();
-        console.log(dataGeo);
 
-        const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country != 'South Korea' ? dataGeo.country : 'korea (Republic of)'}`);
+        const currentCountry = dataGeo.country != 'South Korea' ? dataGeo.country : 'korea (Republic of)';
+
+        const res = await fetch(`https://restcountries.eu/rest/v2/name/${currentCountry}`);
         if(!res.ok) throw new Error('Problem getting country');
 
         const [data] = await res.json();
-        console.log(data);
         renderCountry(data);
+
+        return `2: You are in ${dataGeo.city}, ${currentCountry}`;
         } catch(err) {
-            console.error(err.message);
+            console.error('2: ' + err.message);
+
+            throw err;
         }
 }
-whereAmI('usa');
-console.log('First');
+console.log('1: Will get location');
+// const city = whereAmI();
+// // console.log(city); 
+// city.then(str => console.log(str)).catch(err => console.error(err)).finally(() => console.log('3: Finished getting location'));
 
-// try {
-//     let y = 1;
-//     const x = 2;
-//     x = 3;
-// } catch(err) {
-//     alert(err.message);
-// }
+(async function() {
+    try {
+        const city = await whereAmI();
+        console.log(city);
+    } catch(err) {
+        console.log(err);
+    }
+    console.log('3: Finished getting location');
+})();
