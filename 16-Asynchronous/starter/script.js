@@ -1,5 +1,5 @@
 'use strict';
-
+/* 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -91,7 +91,7 @@ const getCountryData = function(country) {
         if(!neighbour) 
           throw new Error('No neighbour found!');
 
-        return getJSON(`https://restcountries.eu/rest/v2/alpha/${neighbour}`, 'Country not found');
+        return getJSON(`https://restcountries.eu/rest/v2/alpha/${neighbour}`, 'Country not found2');
     }).then(data => {
         renderCountry(data, 'neighbour');
         // const neighbour = data.borders[0];
@@ -117,7 +117,7 @@ const getCountryData = function(country) {
 
 btn.addEventListener('click', function() {
     getCountryData('portugal');
-})
+ })*/
 
 // getCountryData('australia');
 
@@ -132,53 +132,68 @@ btn.addEventListener('click', function() {
 // });
 // console.log(5);
 
-const lotteryPromise = new Promise(function(resolve, reject) {
+// const lotteryPromise = new Promise(function(resolve, reject) {
 
-    console.log('Lottery draw is happening');
-    setTimeout(() => {
-        if(Math.random() >= 0.5) {
-        resolve('You WIN');
-    } else {
-        reject(new Error('You lost your money'));
-    }
-    }, 2000);
-});
+//     console.log('Lottery draw is happening');
+//     setTimeout(() => {
+//         if(Math.random() >= 0.5) {
+//         resolve('You WIN');
+//     } else {
+//         reject(new Error('You lost your money'));
+//     }
+//     }, 2000);
+// });
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
-// Promisifying setTimeout
-const wait = function(seconds) {
-    return new Promise(function(resolve) {
-        setTimeout(resolve, seconds * 1000);
-    });
-}
+// // Promisifying setTimeout
+// const wait = function(seconds) {
+//     return new Promise(function(resolve) {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// }
 
-wait(1).then(() => {
-    console.log('I waited for 1 seconds');
-    return wait(1);
-}).then(() => {
-    console.log('I waited for 2 seconds');
-    return wait(1);
-}).then(() => {
-    console.log('I waited for 3 seconds');
-    return wait(1);
-}).then(() => {
-    console.log('I waited for 4 seconds');
-    return wait(1);
-})
+// wait(1).then(() => {
+//     console.log('I waited for 1 seconds');
+//     return wait(1);
+// }).then(() => {
+//     console.log('I waited for 2 seconds');
+//     return wait(1);
+// }).then(() => {
+//     console.log('I waited for 3 seconds');
+//     return wait(1);
+// }).then(() => {
+//     console.log('I waited for 4 seconds');
+//     return wait(1);
+// })
 
-setTimeout(() => {
-        console.log('1 sec');
-        setTimeout(() => {
-            console.log('2 sec');
-            setTimeout(() => {
-                console.log('3 sec');
-                setTimeout(() => {
-                    console.log('4 sec');
-                }, 1000);
-            }, 1000);
-        }, 1000);
-    }, 1000);
+// setTimeout(() => {
+//         console.log('1 sec');
+//         setTimeout(() => {
+//             console.log('2 sec');
+//             setTimeout(() => {
+//                 console.log('3 sec');
+//                 setTimeout(() => {
+//                     console.log('4 sec');
+//                 }, 1000);
+//             }, 1000);
+//         }, 1000);
+//     }, 1000);
 
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+
+
+
+// const getPosition = function() {
+//     return new Promise(function(resolve, reject) {
+//         // navigator.geolocation.getCurrentPosition(
+//         //     position => resolve(position), 
+//         //     err => reject(err)
+//         //     );
+//         navigator.geolocation.getCurrentPosition(resolve, reject);
+//     })
+// };
+
+// getPosition().then(pos => console.log(pos)).catch(err => console.error(err));
+
