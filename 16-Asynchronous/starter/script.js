@@ -1,7 +1,7 @@
 'use strict';
-/* 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
+/* 
 
 ///////////////////////////////////////
 
@@ -185,15 +185,47 @@ btn.addEventListener('click', function() {
 
 
 
-// const getPosition = function() {
-//     return new Promise(function(resolve, reject) {
-//         // navigator.geolocation.getCurrentPosition(
-//         //     position => resolve(position), 
-//         //     err => reject(err)
-//         //     );
-//         navigator.geolocation.getCurrentPosition(resolve, reject);
-//     })
-// };
+const getPosition = function() {
+    return new Promise(function(resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(
+        //     position => resolve(position), 
+        //     err => reject(err)
+        //     );
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+};
 
 // getPosition().then(pos => console.log(pos)).catch(err => console.error(err));
+const renderCountry = function(data, className = '') {
+    const html = `
+            <article class="country ${className}">
+              <img class="country__img" src="${data.flag}" />
+              <div class="country__data">
+                <h3 class="country__name">${data.name}</h3>
+                <h4 class="country__region">${data.region}</h4>
+                <p class="country__row"><span>👫</span>${(+data.population / 100000).toFixed(1)}</p>
+                <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+                <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+              </div>
+            </article>
+            `
+        countriesContainer.insertAdjacentHTML('beforeend', html);    
+        countriesContainer.style.opacity = 1;
+}
+
+const whereAmI = async function(country) {
+    const pos= await getPosition();
+    const { latitude: lat , longitude: lng } = pos.coords;
+
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    const dataGeo = await resGeo.json();
+    console.log(dataGeo);
+
+    const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country != 'South Korea' ? dataGeo.country : 'korea (Republic of)'}`);
+    const [data] = await res.json();
+    console.log(data);
+    renderCountry(data);
+}
+whereAmI('usa');
+console.log('First');
 

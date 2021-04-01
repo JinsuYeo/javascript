@@ -22,32 +22,32 @@
 // // whereAmI(-33.933, 18.474);
 // btn.addEventListener('click', whereAmI);
 
-const wait = function(seconds) {
-    return new Promise(function(resolve) {
-        setTimeout(resolve, seconds * 1000);
-    });
-}
+// const wait = function(seconds) {
+//     return new Promise(function(resolve) {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// }
 
-let img;
+// let img;
 
-const createImg = function(imgPath) {
-    return new Promise(function(resolve, reject) {
-        img = document.createElement('img');
-        img.src = imgPath;
-        img.addEventListener('load', function(e) {
-            document.querySelector('.images').insertAdjacentElement('beforeend', this);
-            resolve(this);
-        });
-        img.addEventListener('error', function(e) {
-            reject(new Error(e.message));
-        });
-    })
-}
+// const createImg = function(imgPath) {
+//     return new Promise(function(resolve, reject) {
+//         img = document.createElement('img');
+//         img.src = imgPath;
+//         img.addEventListener('load', function(e) {
+//             document.querySelector('.images').insertAdjacentElement('beforeend', this);
+//             resolve(this);
+//         });
+//         img.addEventListener('error', function(e) {
+//             reject(new Error(e.message));
+//         });
+//     })
+// }
 
-createImg('img/img-1.jpg').then(img => wait(2)).then(() => {
-    img.style.display = 'none';
+// createImg('img/img-1.jpg').then(img => wait(2)).then(() => {
+//     img.style.display = 'none';
 
-    return wait(2);
-}).then(() => createImg('img/img-2.jpg')).then(() => wait(2)).then(() => {
-    img.style.display = 'none';
-}).catch(err => console.error(err));
+//     return wait(2);
+// }).then(() => createImg('img/img-2.jpg')).then(() => wait(2)).then(() => {
+//     img.style.display = 'none';
+// }).catch(err => console.error(err));
