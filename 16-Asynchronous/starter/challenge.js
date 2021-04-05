@@ -28,21 +28,22 @@
 //     });
 // }
 
-// let img;
+let currentImg;
 
-// const createImg = function(imgPath) {
-//     return new Promise(function(resolve, reject) {
-//         img = document.createElement('img');
-//         img.src = imgPath;
-//         img.addEventListener('load', function(e) {
-//             document.querySelector('.images').insertAdjacentElement('beforeend', this);
-//             resolve(this);
-//         });
-//         img.addEventListener('error', function(e) {
-//             reject(new Error(e.message));
-//         });
-//     })
-// }
+const createImg = function(imgPath) {
+    return new Promise(function(resolve, reject) {
+        const img = document.createElement('img');
+        currentImg = img;
+        img.src = imgPath;
+        img.addEventListener('load', function(e) {
+            document.querySelector('.images').insertAdjacentElement('beforeend', this);
+            resolve(this);
+        });
+        img.addEventListener('error', function(e) {
+            reject(new Error(e.message));
+        });
+    })
+}
 
 // createImg('img/img-1.jpg').then(img => wait(2)).then(() => {
 //     img.style.display = 'none';
@@ -51,3 +52,30 @@
 // }).then(() => createImg('img/img-2.jpg')).then(() => wait(2)).then(() => {
 //     img.style.display = 'none';
 // }).catch(err => console.error(err));
+
+const loadNPause = async function(sec) {
+    try{
+        const createImg1 = await createImg('img/img-1.jpg');
+        await wait(sec);
+        currentImg.style.display = 'none';
+        await wait(sec);
+        const createImg2 = await createImg('img/img-2.jpg');
+        await wait(sec);
+        currentImg.style.display = 'none'
+    } catch(err) {
+        console.error(err);
+    }
+    
+}
+
+// loadNPause(2);
+
+const loadAll = async function(imgArr) {
+    const imgs = imgArr.map(async img => await createImg(img));
+    console.log(imgs);
+    const realImgs = await Promise.all(imgs);
+    console.log(realImgs);
+    realImgs.forEach(img => img.classList.add('parallel'))
+}
+
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
