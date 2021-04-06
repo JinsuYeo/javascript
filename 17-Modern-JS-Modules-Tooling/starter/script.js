@@ -1,4 +1,4 @@
-/* // Importing module
+ // Importing module
 // import { addToCart, totalPrice as price , tq } from './shoppingCart.js';
 
 // addToCart('bread', 5);
@@ -15,7 +15,7 @@ add('pizza', 2);
 add('bread', 5);
 add('apples', 4);
 
-console.log(cart); */
+console.log(cart); 
 
 // const shoppingCart2 = (function() {
 //     const cart = [];
@@ -44,11 +44,50 @@ console.log(cart); */
 // console.log(shoppingCart2);
 
 
-// Export
-export.addToCart = function(product, quantity) {
-            cart.push({product, quantity});
-            console.log(`${quantity} ${product} added to cart (shipping cost is ${shippingCost})`);
-        };
+// // Export
+// export.addToCart = function(product, quantity) {
+//             cart.push({product, quantity});
+//             console.log(`${quantity} ${product} added to cart (shipping cost is ${shippingCost})`);
+//         };
+``
+// // Import
+// const { addToCart } = require('./shoppingCart.js');
 
-// Import
-const { addToCart } = require('./shoppingCart.js');
+import cloneDeep from 'lodash-es';
+import { Class } from 'leaflet';
+
+const state = {
+    cart: [
+        {product: 'bread', quantity: 5},
+        {product: 'pizza', quantity: 5}
+    ],
+    user: { loggedIn: true },
+};
+const stateClone = Object.assign({}, state);
+const stateCloneDeep = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.log(stateClone);
+
+console.log(stateCloneDeep);
+
+if(module.hot) {
+    module.hot.accept()
+}
+
+class Person {
+    greeting = 'Hey';
+    constructor(name) {
+        this.name = name;
+        console.log(`${this.greeting}, ${this.name}`);        
+    }
+}
+
+const jonas = new Person('Jonas');
+console.log('Jonas' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TESTs').then(x => console.log(x));
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
