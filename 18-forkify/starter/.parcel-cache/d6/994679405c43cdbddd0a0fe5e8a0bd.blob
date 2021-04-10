@@ -1,0 +1,12 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+class PagenationView {}
+
+var _default = new PagenationView();
+
+exports.default = _default;

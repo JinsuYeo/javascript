@@ -1,10 +1,15 @@
 import * as model from './model.js';
-import recipeView from './views/recipeView.js'
-import serchView from './views/searchView.js'
+import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
+import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import searchView from './views/searchView.js';
+
+if(module.hot) {
+  module.hot.accept();
+}
 
 // const recipeContainer = document.querySelector('.recipe');
 
@@ -24,8 +29,6 @@ const controlRecipe = async function() {
 
     // 2) Rendering recipe
     recipeView.render(model.state.recipe);
-
-    
   } catch(err) {
     recipeView.renderError();
   } 
@@ -34,10 +37,15 @@ const controlRecipe = async function() {
 const controlSearchResults = async function() {
   try {
     const query = searchView.getQuery();
+
     if(!query) return;
 
+    resultsView.renderSpinner();
+
     await model.loadSearchResults(query);
-    console.log(model.state.search.results);
+
+    // resultsView.render(model.state.search.results);
+    resultsView.render(model.getSearchResultsPage(1));
   } catch(err) {
     console.log(err);
   }
