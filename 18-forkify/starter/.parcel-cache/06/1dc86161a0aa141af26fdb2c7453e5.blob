@@ -472,10 +472,7 @@ const controlRecipe = async function () {
     const id = window.location.hash.slice(1);
     if (!id) return;
 
-    _recipeView.default.renderSpinner(); // 0) Update results view to mark selected search result
-
-
-    _resultsView.default.update(model.getSearchResultsPage()); // 1) Loading recipes
+    _recipeView.default.renderSpinner(); // 1) Loading recipes
 
 
     await model.loadRecipe(id); // 2) Rendering recipe
@@ -4920,6 +4917,7 @@ class View {
   }
 
   update(data) {
+    if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
     this._data = data;
 
     const newMarkup = this._generateMarkup();
